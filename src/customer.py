@@ -8,10 +8,20 @@ class Customer():
 
 
     def buy_drink(self, drink):
-        self.wallet -= drink.price
-        self.drunkenness += drink.alcohol_level
+        if self.can_afford and self.age >= 18 and self.drunkenness < 10:
+            self.wallet -= drink.price
+            self.drunkenness += drink.alcohol_level 
+        else: return False
 
-    def can_afford(self, drink):
-        
-        if self.wallet >= drink.price:
+    def buy_food(self, food):
+        if self.can_afford:
+            self.drunkenness -= food.rejuvination_level
             return True
+        else: return False
+
+    def can_afford(self, item):
+        if self.wallet >= item.price:
+            return True
+        else: return False
+
+    
