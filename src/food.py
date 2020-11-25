@@ -1,4 +1,3 @@
-
 class Food():
 
     def __init__(self, name, price, rejuvination_level):
